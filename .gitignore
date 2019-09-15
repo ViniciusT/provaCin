@@ -1,0 +1,9 @@
+# ignore idea
+**/.idea/
+**/__pycache__/
+
+# setting and reporting files
+**/.env
+**/.flaskenv
+**/Pipfile
+**/Pipfile.lock

@@ -1,0 +1,2 @@
+FLASK_APP=/Users/vinicius/Desktop/flask_mongo/pymongoexample
+FLASK_ENV=development
