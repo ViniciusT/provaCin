@@ -4,11 +4,14 @@ from pyspark.ml.feature import StopWordsRemover
 from pyspark.ml.feature import CountVectorizer
 from pyspark.ml.feature import NGram
 from .extensions import mongo
+from flask import abort
 
 #Function that create a Spark dataframe and remove special chars
 def build_dataframe(spark):
     files_collection = mongo.db.files
     files = list(files_collection.find())
+    if(len(files) == 0):
+        abort(404, description="Favor inserir pelo menos um documento")
     dataframe = [tuple([files[i]['name'], files[i]['text']]) for i in range(0,len(files))]
     df = spark.createDataFrame(dataframe, ['name', 'text'])
     return df
